@@ -1,3 +1,9 @@
-from django.test import TestCase
+from rest_framework.test import APITestCase
 
-# Create your tests here.
+from django.urls import reverse
+
+class LivroListTests(APITestCase):
+    def testa_livro_list_retorno_200(self):
+        url = reverse('livro-listar-criar')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
